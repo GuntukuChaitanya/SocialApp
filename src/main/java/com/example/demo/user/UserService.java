@@ -19,5 +19,10 @@ public class UserService {
 		System.out.println("We are at UserService");
 		return users;
 	}
+	
+	public User getUserById(String id) {
+		User requestedUser = users.stream().filter(user -> id.equals(user.getId())).findFirst().orElse(null);
+		return requestedUser;
+	}
 
 }

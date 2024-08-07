@@ -19,4 +19,9 @@ public class PostService {
 	public List<Post> getAllPosts(){
 		return posts;
 	}
+	
+	public Post getPostById(String id) {
+		Post requestedPost = posts.stream().filter(post->id.equals(post.getId())).findFirst().orElse(null);	
+		return requestedPost;
+	}
 }

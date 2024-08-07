@@ -13,5 +13,9 @@ public class LocationService {
 	public List<Location> getAllLocations(){
 		return locations;
 	}
-
+	public Location getLocById(String id){
+		Location requestedLoc = locations.stream().filter(loc->id.equals(loc.getId())).findFirst().orElse(null);
+		return requestedLoc;
+	}
+	
 }
