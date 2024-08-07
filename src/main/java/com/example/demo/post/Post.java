@@ -1,12 +1,19 @@
-package post;
+package com.example.demo.post;
 
-import user.User;
+import com.example.demo.user.User;
 
 public class Post {
 private String id;
 private String postDate;
 private String details;
 private User user;
+public Post(String id,String postDate, String details, User user) {
+	super();
+	this.id = id;
+	this.postDate = postDate;
+	this.details = details;
+	this.user = user;
+}
 public String getId() {
 	return id;
 }
