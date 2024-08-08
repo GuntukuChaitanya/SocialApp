@@ -44,4 +44,9 @@ public class UserService {
 			}
 		}
 	}
+	
+	///Delete User by Id from Stored Data
+	public void deleteUser(String id) {
+		users.removeIf(user -> user.getId().equals(id));
+	}
 }

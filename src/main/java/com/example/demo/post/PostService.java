@@ -44,4 +44,9 @@ public class PostService {
 			}
 		}
 	}
+	
+	//Delete a Post by Id from Stored Data
+	public void deletePost(String id) {
+		posts.removeIf(post -> post.getId().equals(id));
+	}
 }

@@ -39,4 +39,9 @@ public class LocationService {
 			}
 		}
 	}
+	
+	//Delete Location Details by Id from Stored Data
+	public void deleteLoc(String id) {
+		locations.removeIf(loc -> loc.getId().equals(id));
+	}
 }

@@ -3,6 +3,7 @@ package com.example.demo.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,12 @@ public class UserController {
 	@PutMapping("/user/update/{id}")
 	public List<User> updateUser(@PathVariable String id, @RequestBody User user){
 		uServ.updateUser(id, user);
+		return uServ.getAllUsers();
+	}
+	
+	@DeleteMapping("/user/{id}")
+	public List<User> deleteUser(@PathVariable String id){
+		uServ.deleteUser(id);
 		return uServ.getAllUsers();
 	}
 }
