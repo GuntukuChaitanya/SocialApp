@@ -1,6 +1,7 @@
 package com.example.demo.location;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,7 @@ public class LocationController {
 	}
 	
 	@GetMapping("/location/{id}")
-	public Location getLocById(@PathVariable String id) {
+	public Optional<Location> getLocById(@PathVariable String id) {
 		return locServ.getLocById(id);
 	}
 	

@@ -1,47 +1,44 @@
 package com.example.demo.location;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LocationService {
-	Location loc1 = new Location("l1","Texas");
-	Location loc2 = new Location("l2","New York");
+	
+	@Autowired
+	private LocationRepository locRepo;
 	
 	// Store Data Here
-	List<Location> locations = new ArrayList<>(Arrays.asList(loc1,loc2));
+	List<Location> locations = new ArrayList<>();
 	
 	//Fetch All Locations from Stored Data
 	public List<Location> getAllLocations(){
+		locRepo.findAll().forEach(locations::add);
 		return locations;
 	}
 	
 	//Gets Location Details by Id
-	public Location getLocById(String id){
-		Location requestedLoc = locations.stream().filter(loc->id.equals(loc.getId())).findFirst().orElse(null);
-		return requestedLoc;
+	public Optional<Location> getLocById(String id){
+		return locRepo.findById(id);
 	}
 	
 	//Add New Location to Stored Data
 	public void addLoc(Location loc){
-		locations.add(loc);
+		locRepo.save(loc);
 	}
 	
 	//Update Location Details by Id
 	public void updateLoc(String id, Location loc) {
-		for(int i=0;i<locations.size(); i++) {
-			Location l = locations.get(i);
-			if(l.getId().equals(id)) {
-				locations.set(i, loc);
-			}
-		}
+		locRepo.save(loc);
 	}
 	
 	//Delete Location Details by Id from Stored Data
 	public void deleteLoc(String id) {
-		locations.removeIf(loc -> loc.getId().equals(id));
+		locRepo.deleteById(id);
 	}
 }
