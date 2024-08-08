@@ -14,18 +14,23 @@ public class UserService {
 	User user1 = new User("u1","Chaitanya", "Guntuku","cg123@gmail.com", new Location("l1","Texas"));
 	User user2 = new User("u2","C2", "G2","cg2123@gmail.com", new Location("l2","New York"));
 	
+	//Store Data Here
 	List<User> users = new ArrayList<>(Arrays.asList(user1,user2));
 	
+	//Fetch All user in Stored Data
 	public List<User> getAllUsers(){
 		System.out.println("We are at UserService");
 		return users;
 	}
 	
+	//Get User Data by Id
 	public User getUserById(String id) {
 		User requestedUser = users.stream().filter(user -> id.equals(user.getId())).findFirst().orElse(null);
 		return requestedUser;
 	}
 	
+	
+	// Add User to Stored Data
 	public void addUser(User user) {
 		users.add(user);
 	}

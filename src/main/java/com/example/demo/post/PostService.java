@@ -15,17 +15,22 @@ public class PostService {
 	Post post1 = new Post("p1","08/07/2024","This is my first post",user1);
 	User user2 = new User("u2","C2", "G2","cg2123@gmail.com", new Location("l2","New York"));
 	Post post2 = new Post("p2","08/06/2024","This is my first post",user2);
+	
+	//Store Data Here
 	List<Post> posts = new ArrayList<>(Arrays.asList(post1, post2));
 	
+	//Fetch all posts from Stored Data
 	public List<Post> getAllPosts(){
 		return posts;
 	}
 	
+	//Gets Post by Id
 	public Post getPostById(String id) {
 		Post requestedPost = posts.stream().filter(post->id.equals(post.getId())).findFirst().orElse(null);	
 		return requestedPost;
 	}
 	
+	// Add New Post to Stored Data
 	public void addPost(Post post) {
 		posts.add(post);
 	}
