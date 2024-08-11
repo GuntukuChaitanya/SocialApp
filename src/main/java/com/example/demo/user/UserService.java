@@ -1,52 +1,47 @@
 package com.example.demo.user;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.location.Location;
 
 @Service
 public class UserService {
 	
-	User user1 = new User("u1","Chaitanya", "Guntuku","cg123@gmail.com", new Location("l1","Texas"));
-	User user2 = new User("u2","C2", "G2","cg2123@gmail.com", new Location("l2","New York"));
 	
+	@Autowired
+	private UserRepository userRepo;
+
 	//Store Data Here
-	List<User> users = new ArrayList<>(Arrays.asList(user1,user2));
+	List<User> users = new ArrayList<>();
 	
 	//Fetch All user in Stored Data
 	public List<User> getAllUsers(){
-		System.out.println("We are at UserService");
+		userRepo.findAll().forEach(users::add);
 		return users;
 	}
 	
 	//Get User Data by Id
-	public User getUserById(String id) {
-		User requestedUser = users.stream().filter(user -> id.equals(user.getId())).findFirst().orElse(null);
-		return requestedUser;
+	public Optional<User> getUserById(String id) {
+		return userRepo.findById(id);
 	}
 	
 	
 	// Add User to Stored Data
 	public void addUser(User user) {
-		users.add(user);
+		userRepo.save(user);
 	}
 	
 	// Update an User by Id
 	public void updateUser(String id, User user) {
-		for(int i=0;i<users.size();i++) {
-			User u = users.get(i);
-			if(u.getId().equals(id)) {
-				users.set(i, user);
-			}
-		}
+		userRepo.save(user);
 	}
 	
 	///Delete User by Id from Stored Data
 	public void deleteUser(String id) {
-		users.removeIf(user -> user.getId().equals(id));
+		userRepo.deleteById(id);
 	}
 }
