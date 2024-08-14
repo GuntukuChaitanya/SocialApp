@@ -3,5 +3,12 @@ insert into location values(2,'Tampa, FL, USA');
 COMMIT;
 insert into app_users (id,first_name,last_name,email,location_id) values(1, 'Chaitanya', 'Guntuku', 'cg123@gmail.com',1 );
 insert into app_users (id,first_name,last_name,email,location_id) values(2, 'Girish', 'G', 'gg2123@gmail.com',2 );
+insert into app_users (id,first_name,last_name,email,location_id) values(3, 'C', 'G', 'cg12345@gmail.com',2 );
+insert into app_users (id,first_name,last_name,email,location_id) values(4, 'G', 'Gu', 'gg212345@gmail.com',1 );
 COMMIT;
-insert into post (id, post_date, details, user_id) values (1, '2024-01-01', 'This is my first post',1)
+insert into post (id, post_date, details, user_id) values (1, '2024-01-01', 'This is my first post',1);
+insert into post (id, post_date, details, user_id) values (2, '2024-01-01', 'This is my second post',1);
+insert into post (id, post_date, details, user_id) values (3, '2024-01-10', 'This is my first post',2);
+insert into post (id, post_date, details, user_id) values (4, '2024-01-10', 'This is my second post',2);
+insert into post (id, post_date, details, user_id) values (5, '2024-01-14', 'This is my first post',3);
+insert into post (id, post_date, details, user_id) values (6, '2024-01-14', 'This is my second post',3);
