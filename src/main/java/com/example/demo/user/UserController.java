@@ -47,4 +47,9 @@ public class UserController {
 		uServ.deleteUser(id);
 		return uServ.getAllUsers();
 	}
+	
+	@GetMapping("/users/location/{id}")
+	public List<User> getUsersByLoc(@PathVariable String id) {
+		return uServ.getUserByLocation(id);
+	}
 }

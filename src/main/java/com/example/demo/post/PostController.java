@@ -45,4 +45,9 @@ public class PostController {
 		postServ.deletePost(id);
 		return postServ.getAllPosts();
 	}
+	
+	@GetMapping("/post/user/{id}")
+	public List<Post> getPostByUserId(@PathVariable String id) {
+		return postServ.findPostsofUser(id);
+	}
 }
