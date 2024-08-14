@@ -15,11 +15,9 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepo;
 
-	//Store Data Here
-	List<User> users = new ArrayList<>();
-	
 	//Fetch All user in Stored Data
 	public List<User> getAllUsers(){
+		List<User> users = new ArrayList<>();
 		userRepo.findAll().forEach(users::add);
 		return users;
 	}

@@ -13,12 +13,9 @@ public class PostService {
 	@Autowired
 	private PostRepository postRepo;
 	
-	
-	//Store Data Here
-	List<Post> posts = new ArrayList<>();
-	
 	//Fetch all posts from Stored Data
 	public List<Post> getAllPosts(){
+		List<Post> posts = new ArrayList<>();
 		postRepo.findAll().forEach(posts::add);
 		return posts;
 	}

@@ -13,11 +13,10 @@ public class LocationService {
 	@Autowired
 	private LocationRepository locRepo;
 	
-	// Store Data Here
-	List<Location> locations = new ArrayList<>();
 	
 	//Fetch All Locations from Stored Data
 	public List<Location> getAllLocations(){
+		List<Location> locations = new ArrayList<>();
 		locRepo.findAll().forEach(locations::add);
 		return locations;
 	}
