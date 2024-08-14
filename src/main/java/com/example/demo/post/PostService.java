@@ -42,4 +42,11 @@ public class PostService {
 	public void deletePost(String id) {
 		postRepo.deleteById(id);
 	}
+	
+	//Find All Posts Of Particular User
+	public List<Post> findPostsofUser(String userId){
+		List<Post> allUserPosts = new ArrayList<>();
+		postRepo.findPostByUserId(userId).forEach(allUserPosts::add);
+		return allUserPosts;
+	}
 }

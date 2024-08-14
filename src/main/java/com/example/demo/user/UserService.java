@@ -44,4 +44,11 @@ public class UserService {
 	public void deleteUser(String id) {
 		userRepo.deleteById(id);
 	}
+	
+	//Get User By LocationId
+	public List<User> getUserByLocation(String locId){
+		List<User> userAtLoc = new ArrayList<>();
+		userRepo.findByLocationId(locId).forEach(userAtLoc::add);
+		return userAtLoc;
+	}
 }
